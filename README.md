@@ -18,15 +18,17 @@ Users can either generate the word cloud with or without a shape.
 
 1. Start by editing app.py and generate.py by filling in the #TODO for the path (for font selection and storage path).
 
-2. As this application is developed using Flask, a virtual environment is needed to run this application.
+2. Install npm, Bootstrap 4 and Font Awesome for the icons used in this web application.
+
+3. As this application is developed using Flask, a virtual environment is needed to run this application.
 
    Please refer to [venv](https://docs.python.org/3/library/venv.html) on installing and activating virtual environment.
 
-3. Run `pip install -r requirements.txt` to install dependencies under virtual environment
+4. Run `pip install -r requirements.txt` to install dependencies under virtual environment
 
-4. Run `flask run` under virtual environment
+5. Run `flask run` under virtual environment
 
-5. Navigate to http://localhost:5000/ in your browser
+6. Navigate to http://localhost:5000/ in your browser
 
 ## Usage
 
