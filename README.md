@@ -4,11 +4,9 @@
 
 This is a web application that allows users to generate word cloud.
 
-The application is mainly built by Flask (python).
+The application is mainly built by Flask (python), Bootstrap library and some jQuery.
 
-The web components are built by Bootstrap library and some jQuery.
-
-The application generate word cloud mainly by [wordcloud](https://github.com/amueller/word_cloud).
+It generates word cloud mainly by [wordcloud](https://github.com/amueller/word_cloud).
 
 Users can upload text from docx/pdf/txt files in English/Chinese/Japanese.
 
