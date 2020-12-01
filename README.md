@@ -32,4 +32,4 @@ Users can either generate the word cloud with or without a shape.
 
 ## Usage
 
-Just follow the instructions on the webpage once you host the web application:)
+Just follow the instructions on the webpage once you host the web application :)
