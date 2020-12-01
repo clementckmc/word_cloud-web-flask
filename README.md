@@ -20,7 +20,7 @@ Users can either generate the word cloud with or without a shape.
 
 2. As this application is developed using Flask, a virtual environment is needed to run this application.
 
-Please refer to [venv](https://docs.python.org/3/library/venv.html) on installing and activating virtual environment.
+   Please refer to [venv](https://docs.python.org/3/library/venv.html) on installing and activating virtual environment.
 
 3. Run `pip install -r requirements.txt` to install dependencies under virtual environment
 
