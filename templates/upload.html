@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <div>
+        <h1>Create your own Word Clouds!</h1>
+        <p>You can create your own <span class="important">English/Chinese/Japanese</span> wordclouds from <span class="important">docx/pdf/txt files</span>!</p>
+        <p>You can also generate wordclouds with <span class="important">shape</span> of your own choice (optional).</p>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display-5">Step 1: Upload text from docx/pdf/txt file</h1>
+        <hr class="my-4">
+        <p>Upload file with one of the following file type:</p>
+
+        <div>
+            <span class="badge badge-pill badge-primary">
+                <i class="fa fa-file-word-o" style="font-size:36px"></i><p class="lead">docx</p>
+            </span>
+
+            <span class="badge badge-pill badge-danger">
+                <i class="fa fa-file-pdf-o" style="font-size:36px"></i><p class="lead">pdf</p>
+            </span>
+
+            <span class="badge badge-pill badge-dark">
+                <i class="fa fa-file-text-o" style="font-size:36px;"></i><p class="lead">txt</p>
+            </span>
+        </div>
+
+
+        <br>
+         
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                  <div class="form-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" name="textfile" id="textfile" accept=".doc,.docx,.pdf,.txt" required>
+                      <label class="custom-file-label" for="textfile" id="selectfile">Select file</label>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+
+        <hr class="my-4">
+
+        <br>
+
+
+        <h1 class="display-5">Step 2: Select language <i class="fa fa-language" style="font-size:36px"></i></h1>
+        <hr class="my-4">
+        <p>Select the language of the text:</p>
+            <select name="lang" class="custom-select">
+                <option value="Eng" selected>English</option>
+                <option value="Chi">中文(Chinese)</option>
+                <option value="Jpn">日本語(Japanese)</option>
+            </select>
+
+
+        <hr class="my-4">
+        <br>
+
+        <h1 class="display-5">Step 3: Upload a mask (optional)</h1>
+        <hr class="my-4">
+        <p>Upload a mask to generate the wordcloud in a shape you like:</p>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                  <div class="form-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" name="mask" id="mask" accept="image/*">
+                      <label class="custom-file-label" for="mask">Select image</label>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+        <br><br>
+
+        <hr class="my-4">
+
+        <button type="submit" class="btn btn-info btn-lg btn-block" disabled>Generate</button>
+
+    </form>
+
+    </div>
+
+    <script>
+        // let name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+          var fileName = $(this).val().split("\\").pop();
+          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+        // enable generate button when file is uploaded
+        $(document).ready(
+        function(){
+            $('input:file').change(
+                function(){
+                    if ($(this).val()) {
+                        $('button:submit').removeAttr('disabled'); 
+                    }
+                }
+                );
+        });
+
+    </script>
+
+{% endblock %}
