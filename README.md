@@ -4,7 +4,7 @@
 
 This is a web application that allows users to generate word cloud.
 
-The application is mainly built by Flask (python), Bootstrap library and some jQuery.
+The application is mainly built by applying Flask (python), Bootstrap library and some jQuery.
 
 It generates word cloud mainly by [wordcloud](https://github.com/amueller/word_cloud).
 
