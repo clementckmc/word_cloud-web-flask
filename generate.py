@@ -8,6 +8,10 @@ import numpy as np
 from wordcloud import WordCloud, ImageColorGenerator, STOPWORDS
 from PIL import Image
 
+script_dir = os.path.dirname(__file__)
+rel_path = "static\\tmp"
+UPLOAD_FOLDER = os.path.join(script_dir, rel_path)
+
 # generate word cloud (without mask)
 def gen_wc(text, lang):
     if lang == "Jpn":
@@ -19,13 +23,13 @@ def gen_wc(text, lang):
     else:
         stop_words = ["said", "will"] + list(STOPWORDS)
         cloud = WordCloud(stopwords=stop_words).generate(text)
-    os.chdir("PATH/wordcloud/static/tmp") #TODO
+    os.chdir(UPLOAD_FOLDER) #TODO
     cloud.to_file("output.png")
 
 # generate word cloud (with mask)
 def gen_wc_m(text, maskname, lang):
     # get mask
-    mask = np.array(Image.open(os.path.join("PATH/wordcloud/static/tmp", maskname))) #TODO
+    mask = np.array(Image.open(os.path.join(UPLOAD_FOLDER, maskname))) #TODO
 
     # get background color
     r = mask[0][0][0]
@@ -35,7 +39,7 @@ def gen_wc_m(text, maskname, lang):
     # generate word cloud
     if lang == "Jpn":
         stop_words = ["の", "こと", "年", "月", "日"] + list(STOPWORDS)
-        cloud = WordCloud(mask=mask, background_color= (r, g, b), stopwords=stop_words, font_path="PATH/FONT_YOU_INTENDED_TO_USE").generate(text) #TODO
+        cloud = WordCloud(mask=mask, background_color= (r, g, b), stopwords=stop_words).generate(text) #TODO
         image_color = ImageColorGenerator(mask)
         cloud.recolor(color_func= image_color)
     elif lang == "Chi":
@@ -49,14 +53,14 @@ def gen_wc_m(text, maskname, lang):
         image_color = ImageColorGenerator(mask)
         cloud.recolor(color_func= image_color)
     
-    os.chdir("PATH/wordcloud/static/tmp")
+    os.chdir(UPLOAD_FOLDER)
     cloud.to_file("output.png")
 
 
 
 # txt file
 def wc_txt(filename, maskname=None, lang="Eng"):
-    text = open(os.path.join("PATH/wordcloud/static/tmp", filename), "r", encoding="utf-8").read() #TODO
+    text = open(os.path.join(UPLOAD_FOLDER, filename), "r", encoding="utf-8").read() #TODO
     if lang == "Chi":
         text = ' '.join(jieba.cut(text))
         if maskname == None:
@@ -97,7 +101,7 @@ def wc_txt(filename, maskname=None, lang="Eng"):
 
 # docx file
 def wc_doc(filename, maskname=None, lang="Eng"):
-    text = docx2txt.process(os.path.join("PATH/wordcloud/static/tmp", filename)) #TODO
+    text = docx2txt.process(os.path.join(UPLOAD_FOLDER, filename)) #TODO
     if lang == "Chi":
         text = ' '.join(jieba.cut(text))
         if maskname == None:
@@ -129,7 +133,7 @@ def wc_doc(filename, maskname=None, lang="Eng"):
 
 # pdf file
 def wc_pdf(filename, maskname=None, lang="Eng"):
-    File = open(os.path.join("PATH/wordcloud/static/tmp", filename),'rb') #TODO
+    File = open(os.path.join(UPLOAD_FOLDER, filename),'rb') #TODO
     pdf = PyPDF2.PdfFileReader(File)
     textlst = []
     for page in pdf.pages:

@@ -6,7 +6,9 @@ from werkzeug.utils import secure_filename
 from generate import apology, wc_txt, wc_doc, wc_pdf
 
 # file uploading
-UPLOAD_FOLDER = "PATH/wordcloud/static/tmp" #TODO
+script_dir = os.path.dirname(__file__)
+rel_path = "static\\tmp"
+UPLOAD_FOLDER = os.path.join(script_dir, rel_path)
 if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'doc', 'docx', 'jpeg', 'gif', 'png', 'jpg'}
